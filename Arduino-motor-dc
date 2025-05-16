@@ -1,0 +1,76 @@
+// Definisikan pin motor
+const int IN1 = 8;
+const int IN2 = 9;
+const int IN3 = 10;
+const int IN4 = 11;
+
+void setup() {
+  // Set pin sebagai output
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+}
+
+void loop() {
+  // Langkah 1: Siap (berhenti sejenak)
+  stopMotor();
+  delay(1000); // 1 detik
+
+  // Langkah 2: Maju 3 detik
+  maju();
+  delay(3000);
+
+  // Langkah 3: Belok kanan 2 detik
+  belokKanan();
+  delay(2000);
+
+  // Langkah 4: Belok kiri 2 detik
+  belokKiri();
+  delay(2000);
+
+  // Langkah 5: Mundur 3 detik
+  mundur();
+  delay(3000);
+
+  // Langkah 6: Berhenti 4 detik
+  stopMotor();
+  delay(4000);
+
+  // Setelah ini, loop akan mengulang lagi dari atas
+}
+
+void maju() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void mundur() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void belokKanan() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
+
+void belokKiri() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void stopMotor() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
